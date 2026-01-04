@@ -1,11 +1,13 @@
 <script>
 export default {
 	name: "ViewToggle",
-	data() {
-		return {
-			activeView: "grid",
-		};
+	props: {
+		modelValue: {
+			type: String,
+			required: true,
+		},
 	},
+	emits: ["update:modelValue"],
 };
 </script>
 
@@ -13,17 +15,19 @@ export default {
 	<div class="view-toggle">
 		<div
 			class="toggle-indicator"
-			:class="{ 'list-view': activeView === 'list' }"></div>
+			:class="{ 'list-view': modelValue === 'list' }"></div>
+
 		<button
 			class="toggle-btn"
-			:class="{ active: activeView === 'grid' }"
-			@click="activeView = 'grid'">
+			:class="{ active: modelValue === 'grid' }"
+			@click="$emit('update:modelValue', 'grid')">
 			<img src="@/assets/icons/grid-icon.svg" alt="Grid view" />
 		</button>
+
 		<button
 			class="toggle-btn"
-			:class="{ active: activeView === 'list' }"
-			@click="activeView = 'list'">
+			:class="{ active: modelValue === 'list' }"
+			@click="$emit('update:modelValue', 'list')">
 			<img src="@/assets/icons/list-icon.svg" alt="List view" />
 		</button>
 	</div>
@@ -33,6 +37,7 @@ export default {
 .view-toggle {
 	position: relative;
 	display: inline-flex;
+	width: fit-content;
 	background: var(--primary);
 	border-radius: 6px;
 	padding: 4px;
