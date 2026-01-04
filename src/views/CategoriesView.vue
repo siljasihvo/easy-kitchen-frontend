@@ -1,7 +1,11 @@
-<script setup></script>
+<script setup>
+import Searchbar from "../components/Searchbar.vue";
+import CategoryListCard from "../components/CategoryListCard.vue";
+</script>
 
 <template>
 	<main>
-		<h2>hi</h2>
+		<Searchbar />
+		<CategoryListCard />
 	</main>
 </template>
