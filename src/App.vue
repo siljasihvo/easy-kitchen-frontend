@@ -18,5 +18,7 @@ import Navigation from "./components/Navigation.vue";
 	min-height: 100vh;
 	padding-left: 42.5px;
 	padding-right: 42.5px;
+	padding-bottom: 120px;
+	padding-top: 20px;
 }
 </style>
