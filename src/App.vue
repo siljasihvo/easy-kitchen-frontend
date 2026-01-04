@@ -10,11 +10,11 @@ import { RouterView } from "vue-router";
 
 <style scoped>
 .mobile-container {
-	max-width: 320px;
+	max-width: 317px;
 	margin: 0 auto;
 	background-color: var(--background);
 	min-height: 100vh;
-	padding-left: 40px;
-	padding-right: 40px;
+	padding-left: 42.5px;
+	padding-right: 42.5px;
 }
 </style>

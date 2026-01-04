@@ -42,7 +42,7 @@ nav {
 	left: 0;
 	right: 0;
 	margin: 0 auto;
-	max-width: 400px;
+	max-width: 402px;
 	z-index: 1000;
 }
 
