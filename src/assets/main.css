@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+  --primary: #ffc13c;
+  --secondary: #3E3221;
+  --background: #EFEADD;
+  --cards: #ffffff;
+}
+
+* {
+    margin: 0;
+    font-family: "Nunito", sans-serif;
+}
+
+h2 {
+    font-size: 24px;
+    color: var(--secondary);
+}
+
+p {
+    font-size: 16px;
+    color: var(--secondary);
+}
+
