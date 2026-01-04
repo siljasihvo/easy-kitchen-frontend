@@ -3,27 +3,27 @@ import OverviewCard from "./OverviewCard.vue";
 
 const allItems = [
 	{
-		itemName: "Bananas",
-		quantity: "6 pieces",
-		category: "🍒 Fruit",
-		storage: "📦 Cupboard",
-		imageSrc: "src/assets/images/bananas.png",
-		expiryStatus: "fresh",
-	},
-	{
-		itemName: "Kiwi",
-		quantity: "2 pieces",
-		category: "🍒 Fruit",
-		storage: "📦 Cupboard",
-		imageSrc: "src/assets/images/bananas.png",
-		expiryStatus: "fresh",
-	},
-	{
-		itemName: "Chicken Breast",
-		quantity: "500g",
+		itemName: "Ground Beef",
+		quantity: "350g",
 		category: "🍖 Meat",
 		storage: "❄️ Fridge",
-		imageSrc: "src/assets/images/bananas.png",
+		imageSrc: "src/assets/images/ground-beef.png",
+		expiryStatus: "fresh",
+	},
+	{
+		itemName: "Chicken Nuggets",
+		quantity: "1 pack",
+		category: "🍖 Meat",
+		storage: "🧊 Freezer",
+		imageSrc: "src/assets/images/chicken-nuggets.png",
+		expiryStatus: "fresh",
+	},
+	{
+		itemName: "Apples",
+		quantity: "10 pieces",
+		category: "🍒 Fruit",
+		storage: "📦 Cupboard",
+		imageSrc: "src/assets/images/apples.png",
 		expiryStatus: "fresh",
 	},
 	{
@@ -31,7 +31,7 @@ const allItems = [
 		quantity: "2 packs",
 		category: "🍖 Meat",
 		storage: "🧊 Freezer",
-		imageSrc: "src/assets/images/bananas.png",
+		imageSrc: "src/assets/images/bitterballen.png",
 		expiryStatus: "fresh",
 	},
 ];
