@@ -4,9 +4,9 @@ import InformationCard from "./InformationCard.vue";
 
 <template>
 	<section class="information-cards">
-		<InformationCard count="47" description="Total items" />
-		<InformationCard count="6" description="Expiring soon" />
-		<InformationCard count="3" description="Expired" />
+		<InformationCard :count="47" description="Total items" />
+		<InformationCard :count="6" description="Expiring soon" />
+		<InformationCard :count="3" description="Expired" />
 	</section>
 </template>
 

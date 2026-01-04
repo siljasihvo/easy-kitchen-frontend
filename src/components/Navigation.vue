@@ -72,4 +72,17 @@ ul {
 	margin-top: 6px;
 	opacity: 0.8;
 }
+
+.nav-li {
+	opacity: 0.7;
+	transition: opacity 0.3s ease;
+}
+
+.nav-li.router-link-active {
+	opacity: 1;
+}
+
+.nav-li:hover {
+	opacity: 1;
+}
 </style>
