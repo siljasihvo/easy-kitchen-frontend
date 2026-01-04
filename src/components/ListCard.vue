@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-	<section class="grid-card">
+	<section class="list-card">
 		<img :src="imageSrc" :alt="itemName" />
 		<div class="information">
 			<p>{{ itemName }}</p>
@@ -22,7 +22,7 @@ defineProps({
 </template>
 
 <style scoped>
-.grid-card {
+.list-card {
 	display: flex;
 	width: 100%;
 	background-color: var(--cards);
@@ -31,14 +31,14 @@ defineProps({
 	border-radius: 10px;
 }
 
-.grid-card img {
+.list-card img {
 	width: 66px;
 	height: 66px;
 	object-fit: cover;
 	border-radius: 10px;
 }
 
-.grid-card p {
+.list-card p {
 	width: 100%;
 	text-align: left;
 	padding-left: 12px;
