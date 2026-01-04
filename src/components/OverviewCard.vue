@@ -1,7 +1,14 @@
+<script setup>
+defineProps({
+	count: Number,
+	description: String,
+});
+</script>
+
 <template>
 	<section>
-		<p class="card-highlight">47</p>
-		<p class="card-detail">Total items</p>
+		<p class="card-highlight">{{ count }}</p>
+		<p class="card-detail">{{ description }}</p>
 	</section>
 </template>
 
@@ -11,7 +18,7 @@ section {
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
-	max-width: 82px;
+	width: 82px;
 	padding: 20px 6px;
 	justify-content: center;
 	align-items: center;

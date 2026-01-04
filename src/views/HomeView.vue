@@ -1,13 +1,13 @@
 <script setup>
 import Navigation from "../components/Navigation.vue";
 import Searchbar from "../components/Searchbar.vue";
-import OverviewCard from "../components/OverviewCard.vue";
+import Overview from "../components/Overview.vue";
 </script>
 
 <template>
 	<main>
 		<Navigation />
 		<Searchbar />
-		<OverviewCard />
+		<Overview />
 	</main>
 </template>
