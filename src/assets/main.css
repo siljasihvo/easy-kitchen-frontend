@@ -5,6 +5,8 @@
   --secondary: #3E3221;
   --background: #EFEADD;
   --cards: #ffffff;
+  --expired: #D8392B;
+  --expiring: #D48A13;
 }
 
 * {
