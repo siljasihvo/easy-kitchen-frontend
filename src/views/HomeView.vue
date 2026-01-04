@@ -3,10 +3,12 @@ import Navigation from "../components/Navigation.vue";
 import Searchbar from "../components/Searchbar.vue";
 import Information from "../components/Information.vue";
 import OverviewCard from "../components/OverviewCard.vue";
+import Greeting from "../components/Greeting.vue";
 </script>
 
 <template>
 	<main>
+		<Greeting />
 		<Navigation />
 		<Searchbar />
 		<Information />
