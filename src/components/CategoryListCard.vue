@@ -1,16 +1,38 @@
+<script setup>
+defineProps({
+	category: String,
+	emoji: String,
+	quantity: Number,
+	expiredCount: {
+		type: Number,
+		default: 0,
+	},
+	expiringCount: {
+		type: Number,
+		default: 0,
+	},
+});
+</script>
+
 <template>
-	<section>
-		<p class="emoji">🥩</p>
+	<section class="category-card">
+		<p class="emoji">{{ emoji }}</p>
 		<div class="information">
-			<p>Meat</p>
+			<p>{{ category }}</p>
 			<div class="footer">
-				<p class="faded-text">7 items</p>
-				<img src="../assets/icons/expired.svg" alt="Expired icon" />
-				<span class="faded-text">1</span>
-				<img
-					src="../assets/icons/expiring.svg"
-					alt="Expiring soon icon" />
-				<span class="faded-text">3</span>
+				<p class="faded-text">{{ quantity }} items</p>
+
+				<template v-if="expiredCount > 0">
+					<img src="../assets/icons/expired.svg" alt="Expired icon" />
+					<span class="faded-text">{{ expiredCount }}</span>
+				</template>
+
+				<template v-if="expiringCount > 0">
+					<img
+						src="../assets/icons/expiring.svg"
+						alt="Expiring soon icon" />
+					<span class="faded-text">{{ expiringCount }}</span>
+				</template>
 			</div>
 		</div>
 		<img
@@ -21,7 +43,7 @@
 </template>
 
 <style scoped>
-section {
+.category-card {
 	display: flex;
 	box-sizing: border-box;
 	width: 100%;
@@ -29,6 +51,7 @@ section {
 	border-radius: 10px;
 	padding: 12px 10px;
 	gap: 15px;
+	cursor: pointer;
 }
 
 .emoji {
@@ -58,7 +81,7 @@ section {
 }
 
 .chevron {
-	margin-left: 70px;
+	margin-left: auto;
 	width: 20px;
 	height: auto;
 	opacity: 0.7;

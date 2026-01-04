@@ -1,11 +1,19 @@
 <script setup>
 import Searchbar from "../components/Searchbar.vue";
-import CategoryListCard from "../components/CategoryListCard.vue";
+import CategoryList from "../components/CategoryList.vue";
 </script>
 
 <template>
 	<main>
 		<Searchbar />
-		<CategoryListCard />
+		<CategoryList />
 	</main>
 </template>
+
+<style scoped>
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+</style>
