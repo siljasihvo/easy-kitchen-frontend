@@ -1,12 +1,14 @@
 <script setup>
 import { RouterView } from "vue-router";
 import Navigation from "./components/Navigation.vue";
+import AddButton from "./components/AddButton.vue";
 </script>
 
 <template>
 	<div class="mobile-container">
 		<RouterView />
 		<Navigation />
+		<AddButton class="add-btn" />
 	</div>
 </template>
 
@@ -20,5 +22,13 @@ import Navigation from "./components/Navigation.vue";
 	padding-right: 42.5px;
 	padding-bottom: 120px;
 	padding-top: 20px;
+}
+
+.add-btn {
+	position: fixed;
+	bottom: 125px;
+	left: 53.5%;
+	margin-left: 80px;
+	z-index: 1000;
 }
 </style>
