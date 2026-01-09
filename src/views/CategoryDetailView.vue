@@ -1,9 +1,9 @@
 <script setup>
 import { ref } from "vue";
 import Searchbar from "../components/Searchbar.vue";
-import ViewToggle from "@/components/ViewToggle.vue";
-import Grid from "@/components/Grid.vue";
-import List from "@/components/List.vue";
+import ViewToggle from "../components/ViewToggle.vue";
+import Grid from "../components/Grid.vue";
+import List from "../components/List.vue";
 
 defineProps({
 	id: String,
