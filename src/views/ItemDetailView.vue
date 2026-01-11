@@ -4,6 +4,7 @@ import { usePantryStore } from "@/stores/pantry";
 import ExpiryDate from "../components/ExpiryDate.vue";
 import BaseSelect from "../components/BaseSelect.vue";
 import BaseInput from "../components/BaseInput.vue";
+import SaveButton from "../components/SaveButton.vue";
 
 const props = defineProps({
 	id: Number,
@@ -44,6 +45,7 @@ const item = computed(() => {
 			label="Notes"
 			placeholder="Notes, meal ideas, specifics..."
 			v-model="quantity" />
+		<SaveButton />
 	</main>
 </template>
 
