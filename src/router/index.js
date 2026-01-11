@@ -5,6 +5,7 @@ import CategoryDetailView from '../views/CategoryDetailView.vue'
 import AddItemView from '../views/AddItemView.vue'
 import StorageView from '../views/StorageView.vue'
 import StorageDetailView from '../views/StorageDetailView.vue'
+import ItemDetailView from '@/views/ItemDetailView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,11 +42,17 @@ const router = createRouter({
       name: 'add-item',
       component: AddItemView
     },
-        {
+    {
       path: '/add-homepage',
       name: 'add-homepage',
       component: HomeView
     },
+    {
+      path: '/items/:id',
+      name: 'item-detail',
+      component: ItemDetailView,
+      props: true
+    }
   ],
 })
 

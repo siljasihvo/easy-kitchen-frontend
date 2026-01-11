@@ -1,8 +1,11 @@
 <script setup>
 import { ref, computed } from "vue";
 import { usePantryStore } from "@/stores/pantry";
+import { useRouter } from "vue-router";
+
 import OverviewCard from "./OverviewCard.vue";
 
+const router = useRouter();
 const pantryStore = usePantryStore();
 const isExpanded = ref(false);
 
@@ -12,27 +15,38 @@ const toggleSection = () => {
 
 const expiringItems = computed(() => {
 	return pantryStore.items
-		.filter(item => item.expiresInDays <= 7)
+		.filter((item) => item.expiresInDays <= 7)
 		.sort((a, b) => a.expiresInDays - b.expiresInDays)
-		.map(item => {
-			const category = pantryStore.categories.find(c => c.id === item.categoryId);
-			const storage = pantryStore.storageLocations.find(s => s.id === item.storageId);
-			
+		.map((item) => {
+			const category = pantryStore.categories.find(
+				(c) => c.id === item.categoryId
+			);
+			const storage = pantryStore.storageLocations.find(
+				(s) => s.id === item.storageId
+			);
+
 			return {
+				id: item.id,
 				itemName: item.name,
 				quantity: item.quantity,
 				category: `${category?.emoji} ${category?.name}`,
 				storage: `${storage?.emoji} ${storage?.name}`,
 				imageSrc: pantryStore.getItemImagePath(item),
-				expiryStatus: item.expiresInDays < 0 ? 'expired' : 'expiring',
+				expiryStatus: item.expiresInDays < 0 ? "expired" : "expiring",
 				expiresInDays: item.expiresInDays,
 			};
 		});
 });
 
 const displayedItems = computed(() => {
-	return isExpanded.value ? expiringItems.value : expiringItems.value.slice(0, 2);
+	return isExpanded.value
+		? expiringItems.value
+		: expiringItems.value.slice(0, 2);
 });
+
+const goToItem = (itemId) => {
+	router.push({ name: "item-detail", params: { id: itemId } });
+};
 </script>
 
 <template>
@@ -64,7 +78,8 @@ const displayedItems = computed(() => {
 				:storage="item.storage"
 				:image-src="item.imageSrc"
 				:expiry-status="item.expiryStatus"
-				:expires-in-days="item.expiresInDays" />
+				:expires-in-days="item.expiresInDays"
+				@click="goToItem(item.id)" />
 		</div>
 	</section>
 </template>

@@ -1,16 +1,19 @@
 <script setup>
 import { computed } from "vue";
 import { usePantryStore } from "@/stores/pantry";
+import { useRouter } from "vue-router";
+
 import ListCard from "../components/ListCard.vue";
 
 const props = defineProps({
 	items: Array,
 	context: {
 		type: String,
-		default: 'category',
-	}
+		default: "category",
+	},
 });
 
+const router = useRouter();
 const pantryStore = usePantryStore();
 
 // Sort items by expiry date
@@ -19,29 +22,37 @@ const sortedItems = computed(() => {
 });
 
 const getStorageEmoji = (storageId) => {
-	const storage = pantryStore.storageLocations.find(s => s.id === storageId);
-	return storage?.emoji || '📦';
+	const storage = pantryStore.storageLocations.find(
+		(s) => s.id === storageId
+	);
+	return storage?.emoji || "📦";
 };
 
 const getStorageName = (storageId) => {
-	const storage = pantryStore.storageLocations.find(s => s.id === storageId);
+	const storage = pantryStore.storageLocations.find(
+		(s) => s.id === storageId
+	);
 	return storage?.name || storageId;
 };
 
 const getCategoryEmoji = (categoryId) => {
-	const category = pantryStore.categories.find(c => c.id === categoryId);
-	return category?.emoji || '📦';
+	const category = pantryStore.categories.find((c) => c.id === categoryId);
+	return category?.emoji || "📦";
 };
 
 const getCategoryName = (categoryId) => {
-	const category = pantryStore.categories.find(c => c.id === categoryId);
+	const category = pantryStore.categories.find((c) => c.id === categoryId);
 	return category?.name || categoryId;
 };
 
 const getExpiryStatus = (expiresInDays) => {
-	if (expiresInDays < 0) return 'expired';
-	if (expiresInDays <= 7) return 'expiring';
-	return 'fresh';
+	if (expiresInDays < 0) return "expired";
+	if (expiresInDays <= 7) return "expiring";
+	return "fresh";
+};
+
+const goToItem = (itemId) => {
+	router.push({ name: "item-detail", params: { id: itemId } });
 };
 </script>
 
@@ -53,10 +64,19 @@ const getExpiryStatus = (expiresInDays) => {
 			:imageSrc="pantryStore.getItemImagePath(item)"
 			:itemName="item.name"
 			:quantity="item.quantity"
-			:storage="context === 'storage' ? getCategoryName(item.categoryId) : getStorageName(item.storageId)"
-			:emoji="context === 'storage' ? getCategoryEmoji(item.categoryId) : getStorageEmoji(item.storageId)"
+			:storage="
+				context === 'storage'
+					? getCategoryName(item.categoryId)
+					: getStorageName(item.storageId)
+			"
+			:emoji="
+				context === 'storage'
+					? getCategoryEmoji(item.categoryId)
+					: getStorageEmoji(item.storageId)
+			"
 			:expiryStatus="getExpiryStatus(item.expiresInDays)"
-			:expiresInDays="item.expiresInDays" />
+			:expiresInDays="item.expiresInDays"
+			@click="goToItem(item.id)" />
 	</section>
 </template>
 
