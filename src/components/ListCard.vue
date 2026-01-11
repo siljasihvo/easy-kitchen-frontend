@@ -5,11 +5,20 @@ defineProps({
 	quantity: String,
 	storage: String,
 	emoji: String,
+	expiryStatus: {
+		type: String,
+		default: "fresh",
+		validator: (value) => ["fresh", "expiring", "expired"].includes(value),
+	},
+	expiresInDays: {
+		type: Number,
+		default: null,
+	},
 });
 </script>
 
 <template>
-	<section class="list-card">
+	<section class="list-card" :class="expiryStatus">
 		<img :src="imageSrc" :alt="itemName" />
 		<div class="information">
 			<p>{{ itemName }}</p>
@@ -18,6 +27,9 @@ defineProps({
 				{{ emoji }} <span>{{ storage }}</span>
 			</p>
 		</div>
+		<span v-if="expiryStatus !== 'fresh'" class="expiry-tag">
+			{{ expiryStatus === "expired" ? "Expired" : `${expiresInDays} ${expiresInDays === 1 ? 'day' : 'days'}` }}
+		</span>
 	</section>
 </template>
 
@@ -30,6 +42,8 @@ defineProps({
 	padding: 12px 12px;
 	border-radius: 10px;
 	cursor: pointer;
+	border: 2px solid transparent;
+	position: relative;
 }
 
 .list-card img {
@@ -63,5 +77,30 @@ defineProps({
 	flex-direction: column;
 	justify-content: center;
 	gap: 4px;
+}
+
+.expired {
+	border-color: var(--expired);
+}
+
+.expiring {
+	border-color: var(--expiring);
+}
+
+.expired .expiry-tag {
+	background-color: var(--expired);
+}
+
+.expiring .expiry-tag {
+	background-color: var(--expiring);
+}
+
+.expiry-tag {
+	margin-left: auto;
+	margin-bottom: auto;
+	color: white;
+	padding: 4px 8px;
+	border-radius: 10px;
+	font-size: 14px;
 }
 </style>

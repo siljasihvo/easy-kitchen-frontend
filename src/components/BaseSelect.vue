@@ -1,22 +1,36 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 const props = defineProps({
 	label: String,
 	defaultText: String,
-	options: Array,
+	options: Array, 
+	modelValue: String,
 });
 
-const isOpen = ref(false);
+const emit = defineEmits(['update:modelValue']);
 
+const isOpen = ref(false);
 const selectedOption = ref(props.defaultText);
+
+watch(() => props.modelValue, (newVal) => {
+	if (newVal) {
+		const option = props.options.find(opt => opt.id === newVal);
+		if (option) {
+			selectedOption.value = option.name;
+		}
+	} else {
+		selectedOption.value = props.defaultText;
+	}
+}, { immediate: true });
 
 const toggleDropdown = () => {
 	isOpen.value = !isOpen.value;
 };
 
 const selectOption = (option) => {
-	selectedOption.value = option;
+	selectedOption.value = option.name;
+	emit('update:modelValue', option.id);
 	isOpen.value = false;
 };
 </script>
@@ -35,8 +49,8 @@ const selectOption = (option) => {
 		</section>
 
 		<ul v-if="isOpen" class="dropdown-menu">
-			<li v-for="item in options" :key="item" @click="selectOption(item)">
-				{{ item }}
+			<li v-for="item in options" :key="item.id" @click="selectOption(item)">
+				{{ item.name }}
 			</li>
 		</ul>
 	</div>

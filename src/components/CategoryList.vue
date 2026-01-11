@@ -1,12 +1,28 @@
 <script setup>
 import { useRouter } from "vue-router";
+import { usePantryStore } from "@/stores/pantry";
+import { computed } from "vue";
 import CategoryListCard from "../components/CategoryListCard.vue";
 
 const router = useRouter();
+const pantryStore = usePantryStore();
 
-const openCategory = (categoryName) => {
-	router.push({ name: "category-detail", params: { id: categoryName } });
+const openCategory = (categoryId) => {
+	router.push({ name: "category-detail", params: { id: categoryId } });
 };
+
+const categoriesWithStats = computed(() => {
+	return pantryStore.categories.map(category => {
+		const categoryItems = pantryStore.items.filter(item => item.categoryId === category.id);
+		
+		return {
+			...category,
+			quantity: categoryItems.length,
+			expiredCount: categoryItems.filter(item => item.expiresInDays < 0).length,
+			expiringCount: categoryItems.filter(item => item.expiresInDays >= 0 && item.expiresInDays <= 7).length
+		};
+	});
+});
 </script>
 
 <template>
@@ -16,52 +32,14 @@ const openCategory = (categoryName) => {
 	</section>
 	<section class="category-list">
 		<CategoryListCard
-			category="Meat"
-			emoji="🥩"
-			:quantity="7"
-			:expired-count="1"
-			:expiring-count="3"
-			@click="openCategory('Meat')" />
-
-		<CategoryListCard
-			category="Fruit"
-			emoji="🍒"
-			:quantity="12"
-			:expiring-count="1"
-			@click="openCategory('Fruit')" />
-
-		<CategoryListCard
-			category="Vegetables"
-			emoji="🥬"
-			:quantity="11"
-			:expired-count="1"
-			@click="openCategory('Vegetables')" />
-
-		<CategoryListCard
-			category="Canned Food"
-			emoji="🥫"
-			:quantity="3"
-			@click="openCategory('Canned Food')" />
-
-		<CategoryListCard
-			category="Snacks"
-			emoji="🍪"
-			:quantity="9"
-			@click="openCategory('Snacks')" />
-
-		<CategoryListCard
-			category="Frozen Food"
-			emoji="🍦"
-			:quantity="21"
-			:expiring-count="1"
-			@click="openCategory('Frozen Food')" />
-
-		<CategoryListCard
-			category="Dairy"
-			emoji="🥛"
-			:quantity="3"
-			:expired-count="1"
-			@click="openCategory('Dairy')" />
+			v-for="category in categoriesWithStats"
+			:key="category.id"
+			:category="category.name"
+			:emoji="category.emoji"
+			:quantity="category.quantity"
+			:expired-count="category.expiredCount"
+			:expiring-count="category.expiringCount"
+			@click="openCategory(category.id)" />
 	</section>
 </template>
 

@@ -1,7 +1,9 @@
+<script setup>
+defineEmits(['click']);
+</script>
+
 <template>
-	<RouterLink to="/add-homepage">
-		<button>Add Item</button>
-	</RouterLink>
+	<button @click="$emit('click')">Add Item</button>
 </template>
 
 <style scoped>

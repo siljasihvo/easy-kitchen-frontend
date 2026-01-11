@@ -1,50 +1,37 @@
 <script setup>
 import { ref, computed } from "vue";
+import { usePantryStore } from "@/stores/pantry";
 import OverviewCard from "./OverviewCard.vue";
 
+const pantryStore = usePantryStore();
 const isExpanded = ref(false);
 
 const toggleSection = () => {
 	isExpanded.value = !isExpanded.value;
 };
 
-const allItems = [
-	{
-		itemName: "Bananas",
-		quantity: "6 pieces",
-		category: "🍒 Fruit",
-		storage: "📦 Cupboard",
-		imageSrc: "src/assets/images/bananas.png",
-		expiryStatus: "expired",
-	},
-	{
-		itemName: "Kiwi",
-		quantity: "2 pieces",
-		category: "🍒 Fruit",
-		storage: "📦 Cupboard",
-		imageSrc: "src/assets/images/kiwi.png",
-		expiryStatus: "expiring",
-	},
-	{
-		itemName: "Chicken Breast",
-		quantity: "500g",
-		category: "🍖 Meat",
-		storage: "❄️ Fridge",
-		imageSrc: "src/assets/images/chicken.png",
-		expiryStatus: "expiring",
-	},
-	{
-		itemName: "Bitterballen",
-		quantity: "2 packs",
-		category: "🍖 Meat",
-		storage: "🧊 Freezer",
-		imageSrc: "src/assets/images/bitterballen.png",
-		expiryStatus: "expiring",
-	},
-];
+const expiringItems = computed(() => {
+	return pantryStore.items
+		.filter(item => item.expiresInDays <= 7)
+		.sort((a, b) => a.expiresInDays - b.expiresInDays)
+		.map(item => {
+			const category = pantryStore.categories.find(c => c.id === item.categoryId);
+			const storage = pantryStore.storageLocations.find(s => s.id === item.storageId);
+			
+			return {
+				itemName: item.name,
+				quantity: item.quantity,
+				category: `${category?.emoji} ${category?.name}`,
+				storage: `${storage?.emoji} ${storage?.name}`,
+				imageSrc: pantryStore.getItemImagePath(item),
+				expiryStatus: item.expiresInDays < 0 ? 'expired' : 'expiring',
+				expiresInDays: item.expiresInDays,
+			};
+		});
+});
 
 const displayedItems = computed(() => {
-	return isExpanded.value ? allItems : allItems.slice(0, 2);
+	return isExpanded.value ? expiringItems.value : expiringItems.value.slice(0, 2);
 });
 </script>
 
@@ -76,7 +63,8 @@ const displayedItems = computed(() => {
 				:category="item.category"
 				:storage="item.storage"
 				:image-src="item.imageSrc"
-				:expiry-status="item.expiryStatus" />
+				:expiry-status="item.expiryStatus"
+				:expires-in-days="item.expiresInDays" />
 		</div>
 	</section>
 </template>

@@ -1,8 +1,20 @@
+<script setup>
+defineProps({
+	modelValue: String,
+});
+
+const emit = defineEmits(['update:modelValue']);
+</script>
+
 <template>
 	<section>
 		<label>Expiry Date</label>
 		<div class="container">
-			<input type="date" required />
+			<input 
+				type="date" 
+				:value="modelValue"
+				@input="emit('update:modelValue', $event.target.value)"
+				required />
 		</div>
 	</section>
 </template>

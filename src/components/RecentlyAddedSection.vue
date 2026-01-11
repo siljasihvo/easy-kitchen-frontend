@@ -1,40 +1,28 @@
 <script setup>
+import { computed } from "vue";
+import { usePantryStore } from "@/stores/pantry";
 import OverviewCard from "./OverviewCard.vue";
 
-const allItems = [
-	{
-		itemName: "Ground Beef",
-		quantity: "350g",
-		category: "🍖 Meat",
-		storage: "❄️ Fridge",
-		imageSrc: "src/assets/images/ground-beef.png",
-		expiryStatus: "fresh",
-	},
-	{
-		itemName: "Chicken Nuggets",
-		quantity: "1 pack",
-		category: "🍖 Meat",
-		storage: "🧊 Freezer",
-		imageSrc: "src/assets/images/chicken-nuggets.png",
-		expiryStatus: "fresh",
-	},
-	{
-		itemName: "Apples",
-		quantity: "10 pieces",
-		category: "🍒 Fruit",
-		storage: "📦 Cupboard",
-		imageSrc: "src/assets/images/apples.png",
-		expiryStatus: "fresh",
-	},
-	{
-		itemName: "Bitterballen",
-		quantity: "2 packs",
-		category: "🍖 Meat",
-		storage: "🧊 Freezer",
-		imageSrc: "src/assets/images/bitterballen.png",
-		expiryStatus: "fresh",
-	},
-];
+const pantryStore = usePantryStore();
+
+const recentlyAddedItems = computed(() => {
+	return pantryStore.items
+		.slice(-6)
+		.reverse()
+		.map(item => {
+			const category = pantryStore.categories.find(c => c.id === item.categoryId);
+			const storage = pantryStore.storageLocations.find(s => s.id === item.storageId);
+			
+			return {
+				itemName: item.name,
+				quantity: item.quantity,
+				category: `${category?.emoji} ${category?.name}`,
+				storage: `${storage?.emoji} ${storage?.name}`,
+				imageSrc: pantryStore.getItemImagePath(item),
+				expiryStatus: 'fresh',
+			};
+		});
+});
 </script>
 
 <template>
@@ -43,7 +31,7 @@ const allItems = [
 
 		<div class="section-content">
 			<OverviewCard
-				v-for="(item, index) in allItems"
+				v-for="(item, index) in recentlyAddedItems"
 				:key="index"
 				:item-name="item.itemName"
 				:quantity="item.quantity"

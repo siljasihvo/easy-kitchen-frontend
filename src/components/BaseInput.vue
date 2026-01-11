@@ -2,14 +2,21 @@
 defineProps({
 	label: String,
 	placeholder: String,
+	modelValue: String,
 });
+
+const emit = defineEmits(['update:modelValue']);
 </script>
 
 <template>
 	<section>
 		<label>{{ label }}</label>
 		<div class="container">
-			<input type="text" :placeholder="placeholder" />
+			<input 
+				type="text" 
+				:placeholder="placeholder" 
+				:value="modelValue"
+				@input="emit('update:modelValue', $event.target.value)" />
 		</div>
 	</section>
 </template>
@@ -33,5 +40,7 @@ input {
 	border-radius: 10px;
 	padding: 12px 16px;
 	outline: none;
+	width: 100%;
+	box-sizing: border-box;
 }
 </style>

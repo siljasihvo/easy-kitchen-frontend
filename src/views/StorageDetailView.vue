@@ -13,12 +13,12 @@ const props = defineProps({
 const currentView = ref("grid");
 const pantryStore = usePantryStore();
 
-const category = computed(() => {
-	return pantryStore.categories.find(c => c.id === props.id);
+const storage = computed(() => {
+	return pantryStore.storageLocations.find(s => s.id === props.id);
 });
 
-const categoryItems = computed(() => {
-	return pantryStore.items.filter(item => item.categoryId === props.id);
+const storageItems = computed(() => {
+	return pantryStore.items.filter(item => item.storageId === props.id);
 });
 </script>
 
@@ -26,11 +26,11 @@ const categoryItems = computed(() => {
 	<main>
 		<section class="top-section">
 			<Searchbar />
-			<h2>{{ category?.name }}</h2>
+			<h2>{{ storage?.name }}</h2>
 			<ViewToggle v-model="currentView" />
 		</section>
-		<Grid v-if="currentView === 'grid'" :items="categoryItems" context="category" />
-		<List v-else-if="currentView === 'list'" :items="categoryItems" context="category" />
+		<Grid v-if="currentView === 'grid'" :items="storageItems" context="storage" />
+		<List v-else-if="currentView === 'list'" :items="storageItems" context="storage" />
 	</main>
 </template>
 

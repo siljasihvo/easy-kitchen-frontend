@@ -10,6 +10,10 @@ defineProps({
 		default: "fresh",
 		validator: (value) => ["fresh", "expiring", "expired"].includes(value),
 	},
+	expiresInDays: {
+		type: Number,
+		default: null,
+	},
 });
 </script>
 
@@ -35,7 +39,7 @@ defineProps({
 			</div>
 		</div>
 		<span v-if="expiryStatus !== 'fresh'" class="expiry-tag">
-			{{ expiryStatus === "expired" ? "Expired" : "2 days" }}
+			{{ expiryStatus === "expired" ? "Expired" : `${expiresInDays} ${expiresInDays === 1 ? 'day' : 'days'}` }}
 		</span>
 	</section>
 </template>
