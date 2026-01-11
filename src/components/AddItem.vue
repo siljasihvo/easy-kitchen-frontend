@@ -24,15 +24,25 @@ const storageList = [
 </script>
 
 <template>
-	<AddPhoto />
-	<BaseInput label="Item Name" placeholder="e.g. Banana, Milk" />
-	<BaseInput label="Quantity" placeholder="e.g. 1L, 350g" />
-	<BaseSelect
-		label="Category"
-		defaultText="Select Category"
-		:options="categoryList" />
-	<BaseSelect
-		label="Storage"
-		defaultText="Select Location"
-		:options="storageList" />
+	<main>
+		<AddPhoto />
+		<BaseInput label="Item Name" placeholder="e.g. Banana, Milk" />
+		<BaseInput label="Quantity" placeholder="e.g. 1L, 350g" />
+		<BaseSelect
+			label="Category"
+			defaultText="Select Category"
+			:options="categoryList" />
+		<BaseSelect
+			label="Storage"
+			defaultText="Select Location"
+			:options="storageList" />
+	</main>
 </template>
+
+<style scoped>
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+</style>

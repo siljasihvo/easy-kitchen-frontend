@@ -6,9 +6,11 @@ defineProps({
 </script>
 
 <template>
-	<label>{{ label }}</label>
-	<section class="container">
-		<input type="text" :placeholder="placeholder" />
+	<section>
+		<label>{{ label }}</label>
+		<div class="container">
+			<input type="text" :placeholder="placeholder" />
+		</div>
 	</section>
 </template>
 

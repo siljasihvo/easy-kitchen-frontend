@@ -33,6 +33,7 @@ const selectTab = (tabName) => {
 	display: flex;
 	justify-content: center;
 	border-bottom: 2px solid #615b54;
+	margin-bottom: 12px;
 }
 
 .tab-btn {
