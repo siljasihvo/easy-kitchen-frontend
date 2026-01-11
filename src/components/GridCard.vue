@@ -31,6 +31,7 @@ defineProps({
 	padding: 12px 0;
 	border-radius: 10px;
 	gap: 2px;
+	cursor: pointer;
 }
 
 .grid-card img {

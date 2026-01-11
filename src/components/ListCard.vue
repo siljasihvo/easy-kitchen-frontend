@@ -29,6 +29,7 @@ defineProps({
 	box-sizing: border-box;
 	padding: 12px 12px;
 	border-radius: 10px;
+	cursor: pointer;
 }
 
 .list-card img {

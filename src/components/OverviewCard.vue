@@ -51,6 +51,7 @@ section {
 	padding: 10px;
 	box-sizing: border-box;
 	border: 2px solid transparent;
+	cursor: pointer;
 }
 
 img {
