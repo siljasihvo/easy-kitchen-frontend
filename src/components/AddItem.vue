@@ -3,6 +3,7 @@ import AddPhoto from "./AddPhoto.vue";
 import BaseInput from "./BaseInput.vue";
 import BaseSelect from "./BaseSelect.vue";
 import AddItemButton from "./AddItemButton.vue";
+import ExpiryDate from "./ExpiryDate.vue";
 
 const categoryList = [
 	"Meat",
@@ -36,6 +37,7 @@ const storageList = [
 			label="Storage"
 			defaultText="Select Location"
 			:options="storageList" />
+		<ExpiryDate />
 		<BaseInput label="Quantity" placeholder="e.g. 1L, 350g" />
 		<AddItemButton />
 	</main>

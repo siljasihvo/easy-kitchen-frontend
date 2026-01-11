@@ -56,7 +56,7 @@ const selectOption = (option) => {
 	border-radius: 10px;
 	width: 100%;
 	box-sizing: border-box;
-	padding: 5px 12px 5px 0px;
+	padding: 5px 20px 5px 0px;
 	cursor: pointer;
 }
 
