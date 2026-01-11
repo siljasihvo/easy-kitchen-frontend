@@ -27,7 +27,12 @@ const router = createRouter({
       path: '/add-item',
       name: 'add-item',
       component: AddItemView
-    }
+    },
+        {
+      path: '/add-homepage',
+      name: 'add-homepage',
+      component: HomeView
+    },
   ],
 })
 

@@ -2,6 +2,7 @@
 import AddPhoto from "./AddPhoto.vue";
 import BaseInput from "./BaseInput.vue";
 import BaseSelect from "./BaseSelect.vue";
+import AddItemButton from "./AddItemButton.vue";
 
 const categoryList = [
 	"Meat",
@@ -27,7 +28,6 @@ const storageList = [
 	<main>
 		<AddPhoto />
 		<BaseInput label="Item Name" placeholder="e.g. Banana, Milk" />
-		<BaseInput label="Quantity" placeholder="e.g. 1L, 350g" />
 		<BaseSelect
 			label="Category"
 			defaultText="Select Category"
@@ -36,6 +36,8 @@ const storageList = [
 			label="Storage"
 			defaultText="Select Location"
 			:options="storageList" />
+		<BaseInput label="Quantity" placeholder="e.g. 1L, 350g" />
+		<AddItemButton />
 	</main>
 </template>
 
