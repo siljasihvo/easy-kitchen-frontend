@@ -4,25 +4,29 @@ import { ref, watch } from "vue";
 const props = defineProps({
 	label: String,
 	defaultText: String,
-	options: Array, 
+	options: Array,
 	modelValue: String,
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(["update:modelValue"]);
 
 const isOpen = ref(false);
 const selectedOption = ref(props.defaultText);
 
-watch(() => props.modelValue, (newVal) => {
-	if (newVal) {
-		const option = props.options.find(opt => opt.id === newVal);
-		if (option) {
-			selectedOption.value = option.name;
+watch(
+	() => props.modelValue,
+	(newVal) => {
+		if (newVal) {
+			const option = props.options.find((opt) => opt.id === newVal);
+			if (option) {
+				selectedOption.value = option.name;
+			}
+		} else {
+			selectedOption.value = props.defaultText;
 		}
-	} else {
-		selectedOption.value = props.defaultText;
-	}
-}, { immediate: true });
+	},
+	{ immediate: true },
+);
 
 const toggleDropdown = () => {
 	isOpen.value = !isOpen.value;
@@ -30,7 +34,7 @@ const toggleDropdown = () => {
 
 const selectOption = (option) => {
 	selectedOption.value = option.name;
-	emit('update:modelValue', option.id);
+	emit("update:modelValue", option.id);
 	isOpen.value = false;
 };
 </script>
@@ -43,13 +47,16 @@ const selectOption = (option) => {
 			<p>{{ selectedOption }}</p>
 
 			<img
-				src="../assets/icons/chevron.svg"
+				src="@/assets/icons/chevron.svg"
 				alt="dropdown icon"
 				:class="{ open: isOpen }" />
 		</section>
 
 		<ul v-if="isOpen" class="dropdown-menu">
-			<li v-for="item in options" :key="item.id" @click="selectOption(item)">
+			<li
+				v-for="item in options"
+				:key="item.id"
+				@click="selectOption(item)">
 				{{ item.name }}
 			</li>
 		</ul>

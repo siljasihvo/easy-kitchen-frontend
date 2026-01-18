@@ -12,14 +12,19 @@ const openStorage = (storageId) => {
 };
 
 const storageWithStats = computed(() => {
-	return pantryStore.storageLocations.map(storage => {
-		const storageItems = pantryStore.items.filter(item => item.storageId === storage.id);
-		
+	return pantryStore.storageLocations.map((storage) => {
+		const storageItems = pantryStore.items.filter(
+			(item) => item.storageId === storage.id,
+		);
+
 		return {
 			...storage,
 			quantity: storageItems.length,
-			expiredCount: storageItems.filter(item => item.expiresInDays < 0).length,
-			expiringCount: storageItems.filter(item => item.expiresInDays >= 0 && item.expiresInDays <= 7).length
+			expiredCount: storageItems.filter((item) => item.expiresInDays < 0)
+				.length,
+			expiringCount: storageItems.filter(
+				(item) => item.expiresInDays >= 0 && item.expiresInDays <= 7,
+			).length,
 		};
 	});
 });
@@ -28,7 +33,7 @@ const storageWithStats = computed(() => {
 <template>
 	<section class="storage-list-header">
 		<h2>Storage</h2>
-		<img src="../assets/icons/edit-icon.svg" alt="Edit storage icon" />
+		<img src="@/assets/icons/edit-icon.svg" alt="Edit storage icon" />
 	</section>
 	<section class="storage-list">
 		<CategoryListCard

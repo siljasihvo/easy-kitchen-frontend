@@ -2,7 +2,7 @@
 	<div class="search-container">
 		<div class="search-bar">
 			<img
-				src="../assets/icons/search.svg"
+				src="@/assets/icons/search.svg"
 				alt="Search"
 				class="search-icon" />
 
@@ -12,7 +12,7 @@
 				class="search-input" />
 
 			<img
-				src="../assets/icons/mic.svg"
+				src="@/assets/icons/mic.svg"
 				alt="Microphone"
 				class="mic-icon" />
 		</div>

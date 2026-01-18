@@ -5,7 +5,7 @@ const props = defineProps({
 	modelValue: [String, File, null],
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(["update:modelValue"]);
 
 const fileInput = ref(null);
 const previewUrl = ref(null);
@@ -13,8 +13,8 @@ const previewUrl = ref(null);
 const handleFileChange = (event) => {
 	const file = event.target.files[0];
 	if (file) {
-		emit('update:modelValue', file);
-		
+		emit("update:modelValue", file);
+
 		const reader = new FileReader();
 		reader.onload = (e) => {
 			previewUrl.value = e.target.result;
@@ -28,28 +28,28 @@ const triggerFileInput = () => {
 };
 
 const removePhoto = () => {
-	emit('update:modelValue', null);
+	emit("update:modelValue", null);
 	previewUrl.value = null;
 	if (fileInput.value) {
-		fileInput.value.value = '';
+		fileInput.value.value = "";
 	}
 };
 </script>
 
 <template>
 	<section @click="triggerFileInput" :class="{ 'has-image': previewUrl }">
-		<input 
+		<input
 			ref="fileInput"
-			type="file" 
+			type="file"
 			accept="image/*"
 			@change="handleFileChange"
-			style="display: none;" />
-		
+			style="display: none" />
+
 		<template v-if="!previewUrl">
-			<img src="../assets/icons/camera.svg" alt="Add Photo Icon" />
+			<img src="@/assets/icons/camera.svg" alt="Add Photo Icon" />
 			<p>Add Photo</p>
 		</template>
-		
+
 		<template v-else>
 			<img :src="previewUrl" alt="Preview" class="preview-image" />
 			<button @click.stop="removePhoto" class="remove-btn">Remove</button>

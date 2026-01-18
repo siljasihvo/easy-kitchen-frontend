@@ -125,7 +125,7 @@ export const usePantryStore = defineStore('pantry', () => {
     
     const category = categories.value.find(c => c.id === item.categoryId)
     const itemName = item.name.toLowerCase().replace(/\s+/g, '-')
-    return `/src/assets/images/${category.name.toLowerCase()}/${itemName}.png`
+    return `/easy-kitchen/images/${category.name.toLowerCase()}/${itemName}.png`
   }
 
   function addItem(item) {

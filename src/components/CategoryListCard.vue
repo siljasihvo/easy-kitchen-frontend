@@ -23,20 +23,20 @@ defineProps({
 				<p class="faded-text">{{ quantity }} items</p>
 
 				<template v-if="expiredCount > 0">
-					<img src="../assets/icons/expired.svg" alt="Expired icon" />
+					<img src="@/assets/icons/expired.svg" alt="Expired icon" />
 					<span class="faded-text">{{ expiredCount }}</span>
 				</template>
 
 				<template v-if="expiringCount > 0">
 					<img
-						src="../assets/icons/expiring.svg"
+						src="@/assets/icons/expiring.svg"
 						alt="Expiring soon icon" />
 					<span class="faded-text">{{ expiringCount }}</span>
 				</template>
 			</div>
 		</div>
 		<img
-			src="../assets/icons/chevron.svg"
+			src="@/assets/icons/chevron.svg"
 			alt="Go to category icon"
 			class="chevron" />
 	</section>

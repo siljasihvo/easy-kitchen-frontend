@@ -12,14 +12,19 @@ const openCategory = (categoryId) => {
 };
 
 const categoriesWithStats = computed(() => {
-	return pantryStore.categories.map(category => {
-		const categoryItems = pantryStore.items.filter(item => item.categoryId === category.id);
-		
+	return pantryStore.categories.map((category) => {
+		const categoryItems = pantryStore.items.filter(
+			(item) => item.categoryId === category.id,
+		);
+
 		return {
 			...category,
 			quantity: categoryItems.length,
-			expiredCount: categoryItems.filter(item => item.expiresInDays < 0).length,
-			expiringCount: categoryItems.filter(item => item.expiresInDays >= 0 && item.expiresInDays <= 7).length
+			expiredCount: categoryItems.filter((item) => item.expiresInDays < 0)
+				.length,
+			expiringCount: categoryItems.filter(
+				(item) => item.expiresInDays >= 0 && item.expiresInDays <= 7,
+			).length,
 		};
 	});
 });
@@ -28,7 +33,7 @@ const categoriesWithStats = computed(() => {
 <template>
 	<section class="category-list-header">
 		<h2>Categories</h2>
-		<img src="../assets/icons/edit-icon.svg" alt="Edit category icon" />
+		<img src="@/assets/icons/edit-icon.svg" alt="Edit category icon" />
 	</section>
 	<section class="category-list">
 		<CategoryListCard

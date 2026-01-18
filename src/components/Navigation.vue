@@ -3,28 +3,28 @@
 		<ul>
 			<li>
 				<RouterLink to="/" class="nav-li">
-					<img src="../assets/icons/home-icon.svg" alt="Home" />
+					<img src="@/assets/icons/home-icon.svg" alt="Home" />
 					<span>Home</span>
 				</RouterLink>
 			</li>
 			<li>
 				<RouterLink to="/categories" class="nav-li">
 					<img
-						src="../assets/icons/category-icon.svg"
+						src="@/assets/icons/category-icon.svg"
 						alt="Categories" />
 					<span>Categories</span>
 				</RouterLink>
 			</li>
 			<li>
 				<RouterLink to="/storage" class="nav-li">
-					<img src="../assets/icons/storage-icon.svg" alt="Storage" />
+					<img src="@/assets/icons/storage-icon.svg" alt="Storage" />
 					<span>Storage</span>
 				</RouterLink>
 			</li>
 			<li>
 				<RouterLink to="/settings" class="nav-li">
 					<img
-						src="../assets/icons/settings-icon.svg"
+						src="@/assets/icons/settings-icon.svg"
 						alt="Settings" />
 					<span>Settings</span>
 				</RouterLink>

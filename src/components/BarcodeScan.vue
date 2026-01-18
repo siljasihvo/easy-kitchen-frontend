@@ -6,7 +6,7 @@
 		<span class="corner bottom-right"></span>
 
 		<img
-			src="../assets/images/barcode.png"
+			:src="`/easy-kitchen/images/barcode.png`"
 			alt="Barcode"
 			class="barcode-img" />
 	</section>
