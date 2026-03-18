@@ -27,8 +27,8 @@ import AddButton from "./components/AddButton.vue";
 .add-btn {
 	position: fixed;
 	bottom: 125px;
-	left: 53.5%;
-	margin-left: 80px;
+	left: 50%;
+	transform: translateX(calc(317px / 2 - 42.5px - 28px));
 	z-index: 1000;
 }
 </style>

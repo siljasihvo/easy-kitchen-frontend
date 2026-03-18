@@ -1,38 +1,40 @@
-# easy-kitchen
+# EasyKitchen
 
-This template should help get you started developing with Vue 3 in Vite.
+A mobile-first web application designed to help users track their food inventory, organize items by kitchen location, and reduce food waste.
 
-## Recommended IDE Setup
+## Features
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Inventory Management:** Easily add, edit, and remove grocery items.
+- **Expiration Tracking:** Keep track of expiration dates to minimize food waste.
+- **Location Categorization:** Organize items by where they are stored (e.g., Fridge, Pantry, Freezer).
+- **Mobile-First Design:** A fully responsive, native-like mobile user experience.
+- **Global State Management:** Seamlessly updates inventory across multiple views without unnecessary API calls.
 
-## Recommended Browser Setup
+## Tech Stack
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- **Framework:** [Vue.js](https://vuejs.org/)
+- **State Management:** [Pinia](https://pinia.vuejs.org/)
+- **Languages:** JavaScript, HTML5, CSS3
+- **Design Prototyping:** Figma, Procreate
 
-## Customize configuration
+## Getting Started
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+To get a local copy up and running, follow these simple steps.
 
-## Project Setup
+### Prerequisites
 
-```sh
-npm install
-```
+Make sure you have Node.js and npm installed on your machine.
 
-### Compile and Hot-Reload for Development
+### Installation
 
-```sh
-npm run dev
-```
+1. Clone the repository
+   git clone https://github.com/your-username/easykitchen.git
 
-### Compile and Minify for Production
+2. Navigate to the project directory
+   cd easykitchen
 
-```sh
-npm run build
-```
+3. Install NPM packages
+   npm install
+
+4. Run the development server
+   npm run dev
